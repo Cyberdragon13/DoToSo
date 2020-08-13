@@ -1,0 +1,13 @@
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\bin\Debug\netcoreapp3.1\DoToSo.exe
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\bin\Debug\netcoreapp3.1\DoToSo.deps.json
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\bin\Debug\netcoreapp3.1\DoToSo.runtimeconfig.json
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\bin\Debug\netcoreapp3.1\DoToSo.runtimeconfig.dev.json
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\bin\Debug\netcoreapp3.1\DoToSo.dll
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\bin\Debug\netcoreapp3.1\DoToSo.pdb
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\obj\Debug\netcoreapp3.1\DoToSo.csprojAssemblyReference.cache
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\obj\Debug\netcoreapp3.1\DoToSo.AssemblyInfoInputs.cache
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\obj\Debug\netcoreapp3.1\DoToSo.AssemblyInfo.cs
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\obj\Debug\netcoreapp3.1\DoToSo.csproj.CoreCompileInputs.cache
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\obj\Debug\netcoreapp3.1\DoToSo.dll
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\obj\Debug\netcoreapp3.1\DoToSo.pdb
+C:\Users\GLaDOS\Documents\DoToSo\DoToSo\DoToSo\obj\Debug\netcoreapp3.1\DoToSo.genruntimeconfig.cache
