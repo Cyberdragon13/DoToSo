@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GLaDOS\\Documents\\DoToSo\\DoToSo\\DoToSo\\DoToSo.csproj",
+      "projectUniqueName": "D:\\Dokumente\\DoToSo\\DoToSo\\DoToSo\\DoToSo.csproj",
       "projectName": "DoToSo",
-      "projectPath": "C:\\Users\\GLaDOS\\Documents\\DoToSo\\DoToSo\\DoToSo\\DoToSo.csproj",
+      "projectPath": "D:\\Dokumente\\DoToSo\\DoToSo\\DoToSo\\DoToSo.csproj",
       "packagesPath": "C:\\Users\\GLaDOS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GLaDOS\\Documents\\DoToSo\\DoToSo\\DoToSo\\obj\\",
+      "outputPath": "D:\\Dokumente\\DoToSo\\DoToSo\\DoToSo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\GLaDOS\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -18,7 +18,7 @@ namespace DoToSo
             StartupMessage();
             PreGameComands PreComands = new PreGameComands();
             ApplicationShutDown ShutdownComand = new ApplicationShutDown();
-            
+            GameComands comands = new GameComands();
 
             do
             {
@@ -26,17 +26,15 @@ namespace DoToSo
 
                 (TournamentStartet,playerList)= PreComands.Comand(TournamentStartet, playerList, input);
 
-
+                (TournamentEndet, playerList) = comands.GameManagement(playerList, TournamentStartet, TournamentEndet, input);
                 
-                if (TournamentEndet == false)
-                {
-
-                }
-                else
+                
+                if(TournamentEndet == true)
                 {
 
             
                 }
+
                 ExitApplication = ShutdownComand.AskForShutdown(input);
                 
             } while (ExitApplication == false);

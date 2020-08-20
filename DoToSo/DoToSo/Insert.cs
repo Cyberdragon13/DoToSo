@@ -37,6 +37,11 @@ namespace DoToSo
                 listPlayer = false;
             }
 
+            if (input == "start")
+            {
+                listPlayer = false;
+            }
+
 
             foreach (player player in playerList)
             {

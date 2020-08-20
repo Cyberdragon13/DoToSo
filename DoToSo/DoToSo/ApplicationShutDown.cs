@@ -29,7 +29,7 @@ namespace DoToSo
                         Console.WriteLine("Insert a valid comand if you want to exit the application [Y/N]");
                     }
 
-                } while (input != "Y" || input != "N");
+                } while (input != "Y" && input != "N");
 
             }
 
