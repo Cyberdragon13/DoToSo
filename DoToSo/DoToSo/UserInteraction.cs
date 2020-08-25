@@ -6,20 +6,15 @@ namespace DoToSo
 {
     public class UserInteraction
     {
-
-        private bool ExitApplication = false;
-
         public void ExecuteTournamentPlan()
         {
             StartupMessage();
             SettingUpPlayerlist PlayerListSetup = new SettingUpPlayerlist();
-            ApplicationShutDown ShutdownComand = new ApplicationShutDown();
-            GameComands comands = new GameComands();
-
+            GameCommands comands = new GameCommands();
     
-            List <Player> playerList= PlayerListSetup.Command();
+            List <Player> playerList = PlayerListSetup.Command();
 
-            playerList = comands.GameManagement(playerList);                       
+            comands.GameManagement(playerList);                       
         }
 
 

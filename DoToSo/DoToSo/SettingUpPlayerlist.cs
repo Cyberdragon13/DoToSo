@@ -6,13 +6,14 @@ namespace DoToSo
 {
     class SettingUpPlayerlist
     {
+        private string UserInput;
         public List<Player> Command()
         {
             List<Player> playerList = new List<Player>();
-            string input;
+
             do
             {               
-                    input = Console.ReadLine();
+                    string input = Console.ReadLine();
                     Insert InsertClass = new Insert();
                     playerList = InsertClass.InsertPlayer(input, playerList);
 
@@ -21,7 +22,7 @@ namespace DoToSo
                         Console.WriteLine("enter next Player, 'list' to list all enterd players or 'start' to generate a match");
                     }            
                     
-            } while (input.ToLower() != "start");
+            } while (UserInput.ToLower() != "start");
             return playerList;
         }
     }

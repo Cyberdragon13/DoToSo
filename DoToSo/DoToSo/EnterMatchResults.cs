@@ -10,7 +10,7 @@ namespace DoToSo
 
         public List<Player> AskForMatchresult(List<Player> playerList, List<Match> matches)
         {
-            bool roundFinished = false;
+            bool roundFinished;
             do
             {
                 ShowPairings(matches);
