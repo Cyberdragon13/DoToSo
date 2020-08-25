@@ -22,7 +22,6 @@ namespace DoToSo
         {
             Console.WriteLine("Dominion Tournament Software");
             Console.WriteLine("Enter a new playername:");
-            return;
         }
     }    
 }

@@ -8,7 +8,7 @@ namespace DoToSo
 {
 
 
-    class GameCommands
+    public class GameCommands
     {
         private int preferedMatchsize = 0;
 

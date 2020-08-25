@@ -4,13 +4,11 @@ using System.Text;
 
 namespace DoToSo
 {
-    
-
-    class Insert
+    public class Insert
     {
         private int maxNameLenght = 50;
 
-        public List<Player> InsertPlayer(string input, List<Player> playerList)
+        public void InsertPlayer(string input, List<Player> playerList)
         {
             bool listPlayer = true;
 
@@ -56,9 +54,7 @@ namespace DoToSo
             if (listPlayer == true)
             {
                 playerList.Add(new Player() { Name = input, Wins = 0, Ties = 0, Looses = 0 });
-            }
-
-            return playerList;
+            }          
         }
     }
 }

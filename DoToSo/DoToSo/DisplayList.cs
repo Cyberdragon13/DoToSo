@@ -4,13 +4,11 @@ using System.Text;
 
 namespace DoToSo
 {
-    class DisplayList
+    public class DisplayList
     {
         private const int maxNameLenght = 50;
-
         public void ListAllPlayers(List<Player> playerList)
         {
-
             DrawListHeader();
             int ListLenghtSinceLastLine = 0;
 

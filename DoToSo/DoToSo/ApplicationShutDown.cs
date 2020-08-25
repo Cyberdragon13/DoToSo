@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DoToSo
 {
-    class ApplicationShutDown
+    public class ApplicationShutDown
     {
         private bool ExitApplication = false;
         public bool AskForShutdown(string userInteraction)

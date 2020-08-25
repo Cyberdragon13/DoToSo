@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DoToSo
 {
-    class Match
+    public class Match
     {
         public List<string> playerInMatch = new List<string>();
         public int matchNumber;

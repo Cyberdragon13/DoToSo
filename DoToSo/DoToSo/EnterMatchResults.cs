@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DoToSo
 {
-    class EnterMatchResults
+    public class EnterMatchResults
     {
 
         public List<Player> AskForMatchresult(List<Player> playerList, List<Match> matches)
