@@ -18,7 +18,7 @@ namespace DoToSo
         }
 
 
-        void StartupMessage()
+        private void StartupMessage()
         {
             Console.WriteLine("Dominion Tournament Software");
             Console.WriteLine("Enter a new playername:");
