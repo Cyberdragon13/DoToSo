@@ -6,8 +6,6 @@ using System.Text;
 
 namespace DoToSo
 {
-
-
     public class GameCommands
     {
         private int preferedMatchsize = 0;
@@ -65,7 +63,6 @@ namespace DoToSo
                 } while (validMatchsize == false);
             }
             return;
-        }
-       
+        }       
     }
 }

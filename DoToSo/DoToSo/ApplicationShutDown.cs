@@ -32,10 +32,7 @@ namespace DoToSo
                 } while (userInteraction != "Y" && userInteraction != "N");
 
             }
-
             return ExitApplication;
         }
-
-
     }
 }

@@ -35,8 +35,6 @@ namespace DoToSo
         }
 
 
-
-
         void DrawListHeader()
         {
             int spaceLeft = maxNameLenght - 2;
@@ -55,6 +53,5 @@ namespace DoToSo
             }
             return size;
         }
-
     }
 }

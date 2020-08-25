@@ -4,11 +4,9 @@ using System.Text;
 
 namespace DoToSo
 {
-    class Pairing
-    {
-       
+    public class Pairing
+    {      
         private bool firstRound = true;
-
         public List<Match> GeneratePairing(List<Player> playerList, int preferedMatchsize)
         {
             List<Match> matches = new List<Match>();
@@ -97,7 +95,6 @@ namespace DoToSo
                             break;
                     }
                 }
-
             }
             return matches;
         }
@@ -112,7 +109,6 @@ namespace DoToSo
                 int j = rand.Next(i);
                 matching.Insert(j, i);
             }
-
             return matching;
         }
     }

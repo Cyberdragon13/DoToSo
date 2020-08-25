@@ -7,7 +7,6 @@ namespace DoToSo
 {
     public class EnterMatchResults
     {
-
         public List<Player> AskForMatchresult(List<Player> playerList, List<Match> matches)
         {
             bool roundFinished;
@@ -245,6 +244,5 @@ namespace DoToSo
             }
             return roundFinished;
         }
-
     }
 }
