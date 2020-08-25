@@ -7,20 +7,20 @@ namespace DoToSo
     class ApplicationShutDown
     {
         private bool ExitApplication = false;
-        public bool AskForShutdown(string input)
+        public bool AskForShutdown(string userInteraction)
         {
-            if (input == "exit" || input == "close")
+            if (userInteraction == "exit" || userInteraction == "close")
             {
                 do
                 {
                     Console.WriteLine("Are you sure you you want to close the Application [Y/N]");
-                    input = Console.ReadLine();
+                    userInteraction = Console.ReadLine();
 
-                    if (input == "Y")
+                    if (userInteraction == "Y")
                     {
                         ExitApplication = true;
                     }
-                    else if (input == "N")
+                    else if (userInteraction == "N")
                     {
                         Console.WriteLine("Continuing the Tournament");
                     }
@@ -29,7 +29,7 @@ namespace DoToSo
                         Console.WriteLine("Insert a valid comand if you want to exit the application [Y/N]");
                     }
 
-                } while (input != "Y" && input != "N");
+                } while (userInteraction != "Y" && userInteraction != "N");
 
             }
 
