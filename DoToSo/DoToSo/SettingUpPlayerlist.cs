@@ -21,7 +21,7 @@ namespace DoToSo
                         Console.WriteLine("enter next Player, 'list' to list all enterd players or 'start' to generate a match");
                     }            
                     
-            } while (input.ToLower() == "start");
+            } while (input.ToLower() != "start");
             return playerList;
         }
     }

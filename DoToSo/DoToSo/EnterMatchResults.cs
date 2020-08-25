@@ -19,8 +19,7 @@ namespace DoToSo
 
                 string inputMatchResult = Console.ReadLine();
 
-                int test = 0;
-                if (int.TryParse(inputMatchResult, out test))
+                if (int.TryParse(inputMatchResult, out int test))
                 {
                     int InputMatchInt = Int16.Parse(inputMatchResult) - 1;
 

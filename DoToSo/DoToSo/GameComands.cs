@@ -17,20 +17,20 @@ namespace DoToSo
         EnterMatchResults matchResults = new EnterMatchResults();
         Pairing Pairing = new Pairing();
 
-        public (bool TournamentEndet, List<Player>) GameManagement(List<Player> playerList, bool TournamentStartet, bool TournamentEndet, string input)
+        public List<Player> GameManagement(List<Player> playerList)
         {
-            if (TournamentStartet == true && TournamentEndet == false)
+            GetPreferedMatchsize();
+            do
             {
-                GetPreferedMatchsize();
-
-                matches = Pairing.GeneratePairing(playerList, preferedMatchsize);              
+                matches = Pairing.GeneratePairing(playerList, preferedMatchsize);
 
                 playerList = matchResults.AskForMatchresult(playerList, matches);
 
                 DisplayList.ListAllPlayers(playerList);
-            }
 
-            return (TournamentEndet, playerList);
+            } while (true);
+                
+            return playerList;
         }
 
 
