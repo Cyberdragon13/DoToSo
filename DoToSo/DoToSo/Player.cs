@@ -6,7 +6,6 @@ namespace DoToSo
 {
     class Player
     {
-        //Properties
         public string Name { get; set; }
         public int Wins { get; set; }
         public int Ties { get; set; }

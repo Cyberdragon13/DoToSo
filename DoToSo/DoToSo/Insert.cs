@@ -14,7 +14,7 @@ namespace DoToSo
         {
             bool listPlayer = true;
 
-            if (input == "list")
+            if (input.ToLower() == "list")
             {
                 DisplayList PlayerList = new DisplayList();
                 PlayerList.ListAllPlayers(playerList);
@@ -37,7 +37,7 @@ namespace DoToSo
                 listPlayer = false;
             }
 
-            if (input == "start")
+            if (input.ToLower() == "start")
             {
                 listPlayer = false;
             }
