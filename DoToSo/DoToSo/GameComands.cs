@@ -17,7 +17,7 @@ namespace DoToSo
         EnterMatchResults matchResults = new EnterMatchResults();
         Pairing Pairing = new Pairing();
 
-        public (bool TournamentEndet, List<player>) GameManagement(List<player> playerList, bool TournamentStartet, bool TournamentEndet, string input)
+        public (bool TournamentEndet, List<Player>) GameManagement(List<Player> playerList, bool TournamentStartet, bool TournamentEndet, string input)
         {
             if (TournamentStartet == true && TournamentEndet == false)
             {

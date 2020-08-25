@@ -6,7 +6,7 @@ namespace DoToSo
 {
     class PreGameComands
     {
-        public (bool, List<player>) Comand(bool TournamentStartet, List<player> playerList, string input)
+        public (bool, List<Player>) Comand(bool TournamentStartet, List<Player> playerList, string input)
         {
             if (TournamentStartet == false)
             {

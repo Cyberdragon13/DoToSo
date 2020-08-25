@@ -8,7 +8,7 @@ namespace DoToSo
     class EnterMatchResults
     {
 
-        public List<player> AskForMatchresult(List<player> playerList, List<Match> matches)
+        public List<Player> AskForMatchresult(List<Player> playerList, List<Match> matches)
         {
             bool roundFinished = false;
             do
@@ -51,7 +51,7 @@ namespace DoToSo
             return playerList;
         }
 
-        private List<player> AskForPlayerResults(List<player> playerList, List<Match> matches, int matchNumber)
+        private List<Player> AskForPlayerResults(List<Player> playerList, List<Match> matches, int matchNumber)
         {
             List<int> numberOfWinners = new List<int>(); ;
 
@@ -80,7 +80,7 @@ namespace DoToSo
             return playerList;
         }
 
-        private List<player> BookWins(List<player> playerList, List<Match> matches, int matchNumber, List<int> numberOfWinners)
+        private List<Player> BookWins(List<Player> playerList, List<Match> matches, int matchNumber, List<int> numberOfWinners)
         {
             for (int i = 0; i<numberOfWinners.Count; i++)
                 {
@@ -105,7 +105,7 @@ namespace DoToSo
             return playerList;
         }
 
-        private List<player> BookLooses(List<player> playerList, List<Match> matches, int matchNumber, List<int> numberOfWinners)
+        private List<Player> BookLooses(List<Player> playerList, List<Match> matches, int matchNumber, List<int> numberOfWinners)
         {
             for (int i = 0; i < matches[matchNumber].playerInMatch.Count; i++)
             {

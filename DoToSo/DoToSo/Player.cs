@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DoToSo
 {
-    class player
+    class Player
     {
         //Properties
         public string Name { get; set; }

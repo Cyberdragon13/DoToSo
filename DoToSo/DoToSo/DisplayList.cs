@@ -8,13 +8,13 @@ namespace DoToSo
     {
         private const int maxNameLenght = 50;
 
-        public void ListAllPlayers(List<player> playerList)
+        public void ListAllPlayers(List<Player> playerList)
         {
 
             DrawListHeader();
             int ListLenghtSinceLastLine = 0;
 
-            foreach (player player in playerList)
+            foreach (Player player in playerList)
             {
                 if (ListLenghtSinceLastLine > 2)
                 {

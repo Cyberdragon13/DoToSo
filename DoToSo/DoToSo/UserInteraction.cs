@@ -7,7 +7,7 @@ namespace DoToSo
     public class UserInteraction
     {
 
-        List<player> playerList = new List<player>();
+        List<Player> playerList = new List<Player>();
         private string input;
         private bool TournamentStartet = false;
         private bool TournamentEndet = false;

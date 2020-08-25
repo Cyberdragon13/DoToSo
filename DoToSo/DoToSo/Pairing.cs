@@ -9,7 +9,7 @@ namespace DoToSo
        
         private bool firstRound = true;
 
-        public List<Match> GeneratePairing(List<player> playerList, int preferedMatchsize)
+        public List<Match> GeneratePairing(List<Player> playerList, int preferedMatchsize)
         {
             List<Match> matches = new List<Match>();
 
@@ -26,7 +26,7 @@ namespace DoToSo
             return matches;
         }
 
-        private List<Match> GenerateRandomPairing(List<player> playerList, int preferedMatchsize)
+        private List<Match> GenerateRandomPairing(List<Player> playerList, int preferedMatchsize)
         {
             List<int> matching = RandomNumberList(playerList.Count);
             List<Match> matches = SplitIntoMatches(playerList, matching, preferedMatchsize);
@@ -34,14 +34,14 @@ namespace DoToSo
             return matches;
         }
 
-        private List<Match> GenerateSwissPairing(List<player> playerList, int preferedMatchsize)
+        private List<Match> GenerateSwissPairing(List<Player> playerList, int preferedMatchsize)
         {
             List<Match> matches = new List<Match>();
             return matches;
             //mm
         }
 
-        private List<Match> SplitIntoMatches(List<player> playerList, List<int> matching, int preferedMatchsize)
+        private List<Match> SplitIntoMatches(List<Player> playerList, List<int> matching, int preferedMatchsize)
         {
             List<Match> matches = new List<Match>();
             int PlayerInMatch = 0;

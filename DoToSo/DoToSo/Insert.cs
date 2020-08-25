@@ -10,7 +10,7 @@ namespace DoToSo
     {
         private int maxNameLenght = 50;
 
-        public List<player> InsertPlayer(string input, List<player> playerList)
+        public List<Player> InsertPlayer(string input, List<Player> playerList)
         {
             bool listPlayer = true;
 
@@ -43,7 +43,7 @@ namespace DoToSo
             }
 
 
-            foreach (player player in playerList)
+            foreach (Player player in playerList)
             {
                 if (player.Name == input)
                 {
@@ -55,7 +55,7 @@ namespace DoToSo
 
             if (listPlayer == true)
             {
-                playerList.Add(new player() { Name = input, Wins = 0, Ties = 0, Looses = 0 });
+                playerList.Add(new Player() { Name = input, Wins = 0, Ties = 0, Looses = 0 });
             }
 
             return playerList;
