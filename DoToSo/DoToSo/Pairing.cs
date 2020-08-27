@@ -5,7 +5,7 @@ using System.Text;
 namespace DoToSo
 {
     public class Pairing
-    {      
+    {
         public List<Match> GeneratePairing(List<Player> playerList, int preferedMatchsize)
         {
             List<int> matching = RandomNumberList(playerList.Count);
@@ -21,34 +21,59 @@ namespace DoToSo
             int matchnumber = 0;
             int PlayersUnmatched = playerList.Count;
 
+            AssigneWildcards(PlayersUnmatched, matchsize, matching, playerList);
+
             for (int i = 0; i < matching.Count; i++)
             {
-
-                if ((PlayersUnmatched % matchsize) == 0)
+                if (PlayerInMatch == 0)
                 {
-                    if (PlayerInMatch == 0)
-                    {
-                        AddMatch(matches,matchnumber);                        
-                    }
-                   
-                    matches[matchnumber].PlayerInMatch.Add(playerList[matching.IndexOf(i)].Name);
-                    PlayerInMatch++;
-
-                    if (PlayerInMatch == matchsize)
-                    {                     
-                        matchnumber++;
-                        PlayerInMatch = 0;
-                        PlayersUnmatched -= matchsize;
-                    }
+                    AddMatch(matches, matchnumber);
                 }
-                else
+
+                matches[matchnumber].AddPlayerToMatch(playerList[matching.IndexOf(i)].Name);
+                PlayerInMatch++;
+
+                if (PlayerInMatch == matchsize)
                 {
-                    PlayersUnmatched--;
-                    Console.WriteLine(playerList[matching.IndexOf(i)].Name + " has drawn a wildcard");
-                    playerList[i].WildcardUsed = true;
-                }     
+                    matchnumber++;
+                    PlayerInMatch = 0;
+                    PlayersUnmatched -= matchsize;
+                }
             }
             return matches;
+        }
+
+
+    
+        private void AssigneWildcards(int PlayersUnmatched, int matchsize, List<int> matching, List<Player> playerList)
+        {
+            int WorstScore = playerList[0].Wins + playerList[0].Ties + playerList[0].Looses;
+            for (int i = 0; i < (PlayersUnmatched % matchsize); i++)
+            {
+                int j = 0;
+                while (playerList[matching.IndexOf(j)].WildcardUsed && WorstScore != playerList[matching.IndexOf(j)].Looses)
+                {
+                    if (j == playerList.Count-1)
+                    {
+                        WorstScore--;
+                        j = 0;
+                    }                                            
+                }
+                PlayersUnmatched--;
+                Console.WriteLine(playerList[matching.IndexOf(j)].Name + " has drawn a wildcard");
+                playerList[matching.IndexOf(j)].WildcardUsed = true;
+
+                               
+                for (int k = 0; k < matching.Count; k++)
+                {
+                    if (matching[k] > j)
+                    {
+                        matching[k]--;
+                    }
+                }
+
+                matching.Remove(j);
+            }                
         }
 
         private List<int> RandomNumberList(int ListSize)
