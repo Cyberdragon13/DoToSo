@@ -17,7 +17,6 @@ namespace DoToSo
             int preferedMatchsize = GetPreferedMatchsize();
             do
             {
-                Console.WriteLine(preferedMatchsize);
                 List<Match> matches = Pairing.GeneratePairing(playerList, preferedMatchsize);
 
                 playerList = matchResults.AskForMatchresult(playerList, matches);

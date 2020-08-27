@@ -42,9 +42,7 @@ namespace DoToSo
             }
             return matches;
         }
-
-
-    
+  
         private void AssigneWildcards(int PlayersUnmatched, int matchsize, List<int> matching, List<Player> playerList)
         {
             int WorstScore = playerList[0].Wins + playerList[0].Ties + playerList[0].Looses;
@@ -62,7 +60,7 @@ namespace DoToSo
                 PlayersUnmatched--;
                 Console.WriteLine(playerList[matching.IndexOf(j)].Name + " has drawn a wildcard");
                 playerList[matching.IndexOf(j)].WildcardUsed = true;
-
+                playerList[matching.IndexOf(j)].Wins++;
                                
                 for (int k = 0; k < matching.Count; k++)
                 {
@@ -71,7 +69,6 @@ namespace DoToSo
                         matching[k]--;
                     }
                 }
-
                 matching.Remove(j);
             }                
         }
