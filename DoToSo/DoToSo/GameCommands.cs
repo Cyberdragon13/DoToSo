@@ -8,15 +8,13 @@ namespace DoToSo
 {
     public class GameCommands
     {
-        private int preferedMatchsize;
-
         DisplayList DisplayList = new DisplayList();
         EnterMatchResults matchResults = new EnterMatchResults();
         Pairing Pairing = new Pairing();
 
         public List<Player> GameManagement(List<Player> playerList)
         {
-            GetPreferedMatchsize();
+            int preferedMatchsize = GetPreferedMatchsize();
             do
             {
                 Console.WriteLine(preferedMatchsize);
@@ -32,9 +30,10 @@ namespace DoToSo
         }
 
 
-        private void GetPreferedMatchsize()
+        private int GetPreferedMatchsize()
         {
-            Console.WriteLine("How many players do you want to have per match");
+            int preferedMatchsize;
+            Console.WriteLine("How many players do you want to have per match");            
             do
             {
                 string inputPreferedMatchsize = Console.ReadLine();
@@ -45,6 +44,7 @@ namespace DoToSo
                     Console.WriteLine("The matchsize has to lie between 2 and 4 players");
                 }
             } while (preferedMatchsize < 2 && preferedMatchsize > 4);
+            return preferedMatchsize;
         }
     }       
 }
