@@ -8,7 +8,7 @@ namespace DoToSo
 {
     public class GameCommands
     {
-        private int preferedMatchsize = 0;
+        private int preferedMatchsize;
 
         DisplayList DisplayList = new DisplayList();
         EnterMatchResults matchResults = new EnterMatchResults();
@@ -19,6 +19,7 @@ namespace DoToSo
             GetPreferedMatchsize();
             do
             {
+                Console.WriteLine(preferedMatchsize);
                 List<Match> matches = Pairing.GeneratePairing(playerList, preferedMatchsize);
 
                 playerList = matchResults.AskForMatchresult(playerList, matches);
@@ -33,36 +34,17 @@ namespace DoToSo
 
         private void GetPreferedMatchsize()
         {
-            bool validMatchsize = false;
-
-            if (preferedMatchsize == 0)
+            Console.WriteLine("How many players do you want to have per match");
+            do
             {
-                Console.WriteLine("How many players do you want to have per match");
-                do
+                string inputPreferedMatchsize = Console.ReadLine();
+                int.TryParse(inputPreferedMatchsize, out preferedMatchsize);
+                if (preferedMatchsize < 2 && preferedMatchsize > 4)
                 {
-                    string inputpreferedMatchsize = Console.ReadLine();
-                    int test = 0;
-                    if (int.TryParse(inputpreferedMatchsize, out test))
-                    {
-                        preferedMatchsize = Int16.Parse(inputpreferedMatchsize);
-                    }
-                    else
-                    {
-                        preferedMatchsize = 0;
-                    }
-
-                    if (preferedMatchsize >= 2 && preferedMatchsize <= 4)
-                    {
-                        validMatchsize = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter a valid playernumber for the match");
-                        Console.WriteLine("The matchsize has to lie between 2 and 4 players");
-                    }
-                } while (validMatchsize == false);
-            }
-            return;
-        }       
-    }
+                    Console.WriteLine("Enter a valid playernumber for the match");
+                    Console.WriteLine("The matchsize has to lie between 2 and 4 players");
+                }
+            } while (preferedMatchsize < 2 && preferedMatchsize > 4);
+        }
+    }       
 }

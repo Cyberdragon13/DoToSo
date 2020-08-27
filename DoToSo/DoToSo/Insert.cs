@@ -39,7 +39,6 @@ namespace DoToSo
                 listPlayer = false;
             }
 
-
             foreach (Player player in playerList)
             {
                 if (player.Name == input)
