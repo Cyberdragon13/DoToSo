@@ -10,5 +10,6 @@ namespace DoToSo
         public int Wins { get; set; }
         public int Ties { get; set; }
         public int Looses { get; set; }
+        public bool WildcardUsed { get; set; }
     }
 }

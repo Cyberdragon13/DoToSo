@@ -6,8 +6,8 @@ namespace DoToSo
 {
     public class Match
     {
-        public List<string> playerInMatch = new List<string>();
-        public int matchNumber;
-        public bool matchFinished;
+        public List<string> PlayerInMatch { get; set; }
+        public int MatchNumber { get; set; }
+        public bool MatchFinished { get; set; }
     }
 }

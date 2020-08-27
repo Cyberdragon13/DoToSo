@@ -6,71 +6,47 @@ namespace DoToSo
 {
     public class Pairing
     {      
-        private List<Match> GeneratePairing(List<Player> playerList, int preferedMatchsize)
+        public List<Match> GeneratePairing(List<Player> playerList, int preferedMatchsize)
         {
             List<int> matching = RandomNumberList(playerList.Count);
             List<Match> matches = SplitIntoMatches(playerList, matching, preferedMatchsize);
-
             return matches;
         }
 
 
-        private List<Match> SplitIntoMatches(List<Player> playerList, List<int> matching, int preferedMatchsize)
+        private List<Match> SplitIntoMatches(List<Player> playerList, List<int> matching, int matchsize)
         {
             List<Match> matches = new List<Match>();
             int PlayerInMatch = 0;
             int matchnumber = 0;
-            int Playersleft = playerList.Count;
+            int PlayersUnmatched = playerList.Count;
 
             for (int i = 0; i < matching.Count; i++)
             {
-                if (PlayerInMatch == 0)
-                {
-                    matches.Add(new Match { playerInMatch = new List<string>(), matchNumber = matchnumber, matchFinished = false });
-                }
 
-                matches[matchnumber].playerInMatch.Add(playerList[matching.IndexOf(i)].Name);
-
-                PlayerInMatch++;
-                if ((Playersleft % preferedMatchsize) == 0)
+                if ((PlayersUnmatched % matchsize) == 0)
                 {
-                    if (PlayerInMatch == preferedMatchsize)
+                    if (PlayerInMatch == 0)
                     {
+                        AddMatch(matches,matchnumber);                        
+                    }
+                   
+                    matches[matchnumber].PlayerInMatch.Add(playerList[matching.IndexOf(i)].Name);
+                    PlayerInMatch++;
+
+                    if (PlayerInMatch == matchsize)
+                    {                     
                         matchnumber++;
                         PlayerInMatch = 0;
-                        Playersleft -= preferedMatchsize;
+                        PlayersUnmatched -= matchsize;
                     }
                 }
                 else
                 {
-                    switch (preferedMatchsize)
-                    {
-                        case 2:
-                            if (PlayerInMatch == 3)
-                            {
-                                matchnumber++;
-                                PlayerInMatch = 0;
-                                Playersleft -= 3;
-                            }
-                            break;
-                        case 3:
-                            if (PlayerInMatch == 4)
-                            {
-                                matchnumber++;
-                                PlayerInMatch = 0;
-                                Playersleft -= 4;
-                            }
-                            break;
-                        default:
-                            if (PlayerInMatch == 3)
-                            {
-                                matchnumber++;
-                                PlayerInMatch = 0;
-                                Playersleft -= 3;
-                            }
-                            break;
-                    }
-                }
+                    PlayersUnmatched--;
+                    Console.WriteLine(playerList[matching.IndexOf(i)].Name + " has drawn a wildcard");
+                    playerList[i].WildcardUsed = true;
+                }     
             }
             return matches;
         }
@@ -86,6 +62,11 @@ namespace DoToSo
                 matching.Insert(j, i);
             }
             return matching;
+        }
+
+        public void AddMatch(List<Match> matches, int matchnumber)
+        {
+            matches.Add(new Match { PlayerInMatch = new List<string>(), MatchNumber = matchnumber, MatchFinished = false });
         }
     }
 }
