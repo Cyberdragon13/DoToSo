@@ -1,0 +1,3 @@
+#ignoring the binary and object data
+*\bin
+*\obj
