@@ -46,6 +46,9 @@ namespace DoToSo
         private void AssigneWildcards(int PlayersUnmatched, int matchsize, List<int> matching, List<Player> playerList)
         {
             int WorstScore = playerList[0].Wins + playerList[0].Ties + playerList[0].Looses;
+
+            Console.WriteLine(PlayersUnmatched % matchsize + " wildcard(s) assigned");
+
             for (int i = 0; i < (PlayersUnmatched % matchsize); i++)
             {
                 int j = 0;
@@ -80,7 +83,7 @@ namespace DoToSo
 
             for (int i = 0; i < ListSize; i++)
             {
-                int j = rand.Next(i);
+                int j = rand.Next(i+1);
                 matching.Insert(j, i);
             }
             return matching;
