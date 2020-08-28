@@ -4,102 +4,76 @@ using System.Text;
 
 namespace DoToSo
 {
-    class Pairing
+    public class Pairing
     {
-       
-        private bool firstRound = true;
-
-        public List<Match> GeneratePairing(List<player> playerList, int preferedMatchsize)
-        {
-            List<Match> matches = new List<Match>();
-
-            if (firstRound == true)
-            {
-                matches = GenerateRandomPairing(playerList, preferedMatchsize);
-            }
-            else
-            {
-                matches = GenerateSwissPairing(playerList, preferedMatchsize);
-            }
-
-            firstRound = false;
-            return matches;
-        }
-
-        private List<Match> GenerateRandomPairing(List<player> playerList, int preferedMatchsize)
+        public List<Match> GeneratePairing(List<Player> playerList, int preferedMatchsize)
         {
             List<int> matching = RandomNumberList(playerList.Count);
             List<Match> matches = SplitIntoMatches(playerList, matching, preferedMatchsize);
-
             return matches;
         }
 
-        private List<Match> GenerateSwissPairing(List<player> playerList, int preferedMatchsize)
-        {
-            List<Match> matches = new List<Match>();
-            return matches;
-            //mm
-        }
 
-        private List<Match> SplitIntoMatches(List<player> playerList, List<int> matching, int preferedMatchsize)
+        private List<Match> SplitIntoMatches(List<Player> playerList, List<int> matching, int matchsize)
         {
             List<Match> matches = new List<Match>();
             int PlayerInMatch = 0;
             int matchnumber = 0;
-            int Playersleft = playerList.Count;
+            int PlayersUnmatched = playerList.Count;
+
+            AssigneWildcards(PlayersUnmatched, matchsize, matching, playerList);
 
             for (int i = 0; i < matching.Count; i++)
             {
                 if (PlayerInMatch == 0)
                 {
-                    matches.Add(new Match { playerInMatch = new List<string>(), matchNumber = matchnumber, matchFinished = false });
+                    AddMatch(matches, matchnumber);
                 }
 
-                matches[matchnumber].playerInMatch.Add(playerList[matching.IndexOf(i)].Name);
-
+                matches[matchnumber].AddPlayerToMatch(playerList[matching.IndexOf(i)].Name);
                 PlayerInMatch++;
-                if ((Playersleft % preferedMatchsize) == 0)
-                {
-                    if (PlayerInMatch == preferedMatchsize)
-                    {
-                        matchnumber++;
-                        PlayerInMatch = 0;
-                        Playersleft -= preferedMatchsize;
-                    }
-                }
-                else
-                {
-                    switch (preferedMatchsize)
-                    {
-                        case 2:
-                            if (PlayerInMatch == 3)
-                            {
-                                matchnumber++;
-                                PlayerInMatch = 0;
-                                Playersleft -= 3;
-                            }
-                            break;
-                        case 3:
-                            if (PlayerInMatch == 4)
-                            {
-                                matchnumber++;
-                                PlayerInMatch = 0;
-                                Playersleft -= 4;
-                            }
-                            break;
-                        default:
-                            if (PlayerInMatch == 3)
-                            {
-                                matchnumber++;
-                                PlayerInMatch = 0;
-                                Playersleft -= 3;
-                            }
-                            break;
-                    }
-                }
 
+                if (PlayerInMatch == matchsize)
+                {
+                    matchnumber++;
+                    PlayerInMatch = 0;
+                    PlayersUnmatched -= matchsize;
+                }
             }
             return matches;
+        }
+  
+        private void AssigneWildcards(int PlayersUnmatched, int matchsize, List<int> matching, List<Player> playerList)
+        {
+            int WorstScore = playerList[0].Wins + playerList[0].Ties + playerList[0].Looses;
+
+            Console.WriteLine(PlayersUnmatched % matchsize + " wildcard(s) assigned");
+
+            for (int i = 0; i < (PlayersUnmatched % matchsize); i++)
+            {
+                int j = 0;
+                while (playerList[matching.IndexOf(j)].WildcardUsed && WorstScore != playerList[matching.IndexOf(j)].Looses)
+                {
+                    if (j == playerList.Count-1)
+                    {
+                        WorstScore--;
+                        j = 0;
+                    }                                            
+                }
+                PlayersUnmatched--;
+                Console.WriteLine(playerList[matching.IndexOf(j)].Name + " has drawn a wildcard");
+                playerList[matching.IndexOf(j)].WildcardUsed = true;
+                playerList[matching.IndexOf(j)].Wins++;
+                               
+                for (int k = 0; k < matching.Count; k++)
+                {
+                    if (matching[k] > j)
+                    {
+                        matching[k]--;
+                    }
+                }
+                matching.Remove(j);
+            }                
         }
 
         private List<int> RandomNumberList(int ListSize)
@@ -109,11 +83,15 @@ namespace DoToSo
 
             for (int i = 0; i < ListSize; i++)
             {
-                int j = rand.Next(i);
+                int j = rand.Next(i+1);
                 matching.Insert(j, i);
             }
-
             return matching;
+        }
+
+        public void AddMatch(List<Match> matches, int matchnumber)
+        {
+            matches.Add(new Match { PlayerInMatch = new List<string>(), MatchNumber = matchnumber, MatchFinished = false });
         }
     }
 }

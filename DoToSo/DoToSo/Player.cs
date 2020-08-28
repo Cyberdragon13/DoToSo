@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DoToSo
 {
-    class player
+    public class Player
     {
-        //Properties
         public string Name { get; set; }
         public int Wins { get; set; }
         public int Ties { get; set; }
         public int Looses { get; set; }
+        public bool WildcardUsed { get; set; }
     }
 }
