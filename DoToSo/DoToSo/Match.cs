@@ -9,12 +9,12 @@ namespace DoToSo
     {
         public Match()
         {
-            PlayersInMatch = new List<player>();
+            PlayersInMatch = new List<Player>();
         }
 
-        public Match(player player1, player player2)
+        public Match(Player player1, Player player2)
         {
-            PlayersInMatch = new List<player>();
+            PlayersInMatch = new List<Player>();
             PlayersInMatch.Add(player1);
             PlayersInMatch.Add(player2);
         }
@@ -24,10 +24,13 @@ namespace DoToSo
                 .Intersect(PlayersInMatch.Select(player => player.Id))
                 .Any();
 
-        public List<player> PlayersInMatch { get; set; }
+        public List<Player> PlayersInMatch { get; set; }
+        public int MatchNumber { get; set; }
+        public bool MatchFinished { get; set; }
 
-        public List<string> playerInMatch = new List<string>();
-        public int matchNumber;
-        public bool matchFinished;
+        public void AddPlayerToMatch(Player player)
+        {
+            PlayersInMatch.Add(player);
+        }
     }
 }

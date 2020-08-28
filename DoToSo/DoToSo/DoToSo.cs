@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 
 namespace DoToSo
 {
-    class DoToSo
+    public class DoToSo
     {
         static void Main(string[] args)
         {

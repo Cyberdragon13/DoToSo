@@ -8,16 +8,16 @@ namespace DoToSo
 {
     public class SwissSystem
     {
-        public ShuffleListBc<player> ShuffleListBc {get; set;}
+        public ShuffleListBc<Player> ShuffleListBc {get; set;}
         public Random Random { get; set; }
 
         public SwissSystem()
         {
-            ShuffleListBc = new ShuffleListBc<player>();
+            ShuffleListBc = new ShuffleListBc<Player>();
             Random = new Random();
         }
 
-        public List<Match> GeneratePairing(List<player> playerList, int preferedMatchsize)
+        public List<Match> GeneratePairing(List<Player> playerList, int preferedMatchsize)
         {
             List<Match> matches = new List<Match>();
 
@@ -33,10 +33,10 @@ namespace DoToSo
             return matches;
         }
 
-        private List<Match> GeneratePairingsForTwoPlayerMatches(List<player> allPlayers)
+        private List<Match> GeneratePairingsForTwoPlayerMatches(List<Player> allPlayers)
         {
             //need to have a new list, since we remove a player at assignment of bye from the list, but it should not be removed from the original list
-            List<player> players = new List<player>(allPlayers);
+            List<Player> players = new List<Player>(allPlayers);
             List<Match> generatedMatches = new List<Match>();
 
             if(allPlayers.Count % 2 == 1)
@@ -44,14 +44,14 @@ namespace DoToSo
                 AssignBye(players);
             }
 
-            Dictionary<decimal, List<player>> playersByDescendingScore = GroupPlayersByDescendingScore(players);
+            Dictionary<decimal, List<Player>> playersByDescendingScore = GroupPlayersByDescendingScore(players);
 
             foreach(decimal score in playersByDescendingScore.Keys)
             {
                 // quadratic or even cubic runtime in this loop will be ok 
                 // since possible scores will probably never go over 100 and amount of players not over 5000 (this is already a really high estimation)
 
-                List<player> playerGroupToPair = playersByDescendingScore[score];
+                List<Player> playerGroupToPair = playersByDescendingScore[score];
 
                 if(playerGroupToPair.Count % 2 == 1)
                 {
@@ -64,14 +64,14 @@ namespace DoToSo
             return generatedMatches;
         }
 
-        private List<Match> PairPlayers(List<player> playersToPair)
+        private List<Match> PairPlayers(List<Player> playersToPair)
         {
             ShuffleListBc.FisherYatesShuffle(playersToPair, Random);
 
             return RotateBeforeSplit(playersToPair, 0);
         }
 
-        private List<Match> RotateWithinList(List<player> playersToRotate, List<player> otherPlayers, int rotationStartingIndex)
+        private List<Match> RotateWithinList(List<Player> playersToRotate, List<Player> otherPlayers, int rotationStartingIndex)
         {
             for(int i = rotationStartingIndex; i < playersToRotate.Count; i++)
             {
@@ -81,8 +81,8 @@ namespace DoToSo
                     return matches;
                 }
 
-                player player1 = playersToRotate[rotationStartingIndex];
-                player player2 = playersToRotate[i];
+                Player player1 = playersToRotate[rotationStartingIndex];
+                Player player2 = playersToRotate[i];
                 Swap(ref player1, ref player2);
                 RotateWithinList(playersToRotate, otherPlayers, rotationStartingIndex + 1);
             }
@@ -90,13 +90,13 @@ namespace DoToSo
             return null;
         }
 
-        private List<Match> RotateBeforeSplit(List<player> players, int rotationStartIndex)
+        private List<Match> RotateBeforeSplit(List<Player> players, int rotationStartIndex)
         {
             for(int i = rotationStartIndex; i < players.Count; i++)
             {
                 int halfAmountOfPlayers = players.Count / 2;
-                List<player> firstHalf = players.Take(halfAmountOfPlayers).ToList();
-                List<player> secondHalf = players.Skip(halfAmountOfPlayers).Take(halfAmountOfPlayers).ToList();
+                List<Player> firstHalf = players.Take(halfAmountOfPlayers).ToList();
+                List<Player> secondHalf = players.Skip(halfAmountOfPlayers).Take(halfAmountOfPlayers).ToList();
 
                 List<Match> matches = RotateWithinList(firstHalf, secondHalf, 0);
 
@@ -105,8 +105,8 @@ namespace DoToSo
                     return matches;
                 }
 
-                player player1 = players[rotationStartIndex];
-                player player2 = players[i];
+                Player player1 = players[rotationStartIndex];
+                Player player2 = players[i];
                 Swap(ref player1, ref player2);
                 RotateBeforeSplit(players, rotationStartIndex + 1);
             }
@@ -114,14 +114,14 @@ namespace DoToSo
             return null;
         }
 
-        private void Swap(ref player player1, ref player player2)
+        private void Swap(ref Player player1, ref Player player2)
         {
             if (player1 == player2)
             {
                 return;
             }
 
-            player temp = player1;
+            Player temp = player1;
             player1 = player2;
             player2 = temp;
         }
@@ -131,7 +131,7 @@ namespace DoToSo
             return matches.Any(match => match.IsForbidden == true) == false;
         }
 
-        private List<Match> CreateMatches(List<player> firstHalfOfPlayers, List<player> secondHalfOfPlayers)
+        private List<Match> CreateMatches(List<Player> firstHalfOfPlayers, List<Player> secondHalfOfPlayers)
         {
             List<Match> matches = new List<Match>();
 
@@ -143,16 +143,16 @@ namespace DoToSo
             return matches;
         }
 
-        private void PairUpAPlayer(Dictionary<decimal, List<player>> playersByDescendingScore, List<player> playerGroupToPair)
+        private void PairUpAPlayer(Dictionary<decimal, List<Player>> playersByDescendingScore, List<Player> playerGroupToPair)
         {
             decimal score = playerGroupToPair.First().Score;
             decimal nextScore = playersByDescendingScore.Keys.First(value => value < score);
-            player pairedUpPlayer = playersByDescendingScore[nextScore].First(player => player.HasBeenPairedUp == false);
+            Player pairedUpPlayer = playersByDescendingScore[nextScore].First(player => player.HasBeenPairedUp == false);
             pairedUpPlayer.HasBeenPairedUp = true;
             playerGroupToPair.Add(pairedUpPlayer);
         }
 
-        private Dictionary<decimal, List<player>> GroupPlayersByDescendingScore(List<player> players)
+        private Dictionary<decimal, List<Player>> GroupPlayersByDescendingScore(List<Player> players)
         {
             return players
                 .GroupBy(player => player.Score)
@@ -160,9 +160,9 @@ namespace DoToSo
                 .ToDictionary(group => group.Key, group => group.ToList());
         }
 
-        private void AssignBye(List<player> players)
+        private void AssignBye(List<Player> players)
         {
-            player playerWithBye = players.OrderBy(player => player.Score).First(player => player.HadBye == false);
+            Player playerWithBye = players.OrderBy(player => player.Score).First(player => player.HadBye == false);
             playerWithBye.Wins += 1;
             players.Remove(playerWithBye);
         }

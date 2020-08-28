@@ -4,17 +4,15 @@ using System.Text;
 
 namespace DoToSo
 {
-    class DisplayList
+    public class DisplayList
     {
         private const int maxNameLenght = 50;
-
-        public void ListAllPlayers(List<player> playerList)
+        public void ListAllPlayers(List<Player> playerList)
         {
-
             DrawListHeader();
             int ListLenghtSinceLastLine = 0;
 
-            foreach (player player in playerList)
+            foreach (Player player in playerList)
             {
                 if (ListLenghtSinceLastLine > 2)
                 {
@@ -28,15 +26,13 @@ namespace DoToSo
 
                 string fil2 = new string(' ', 4 - NumberLenght(player.Wins));
                 string fil3 = new string(' ', 4 - NumberLenght(player.Ties));
-                string fil4 = new string(' ', 4 - NumberLenght(player.Looses));
+                string fil4 = new string(' ', 4 - NumberLenght(player.Loses));
 
-                Console.WriteLine(player.Name + fil1 + "| " + fil2 + player.Wins + " | " + fil3 + player.Ties + " | " + fil4 + player.Looses);
+                Console.WriteLine(player.Name + fil1 + "| " + fil2 + player.Wins + " | " + fil3 + player.Ties + " | " + fil4 + player.Loses);
 
                 ListLenghtSinceLastLine++;               
             }
         }
-
-
 
 
         void DrawListHeader()
@@ -57,6 +53,5 @@ namespace DoToSo
             }
             return size;
         }
-
     }
 }

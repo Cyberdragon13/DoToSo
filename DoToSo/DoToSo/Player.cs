@@ -4,9 +4,9 @@ using System.Text;
 
 namespace DoToSo
 {
-    public class player
+    public class Player
     {
-        public player()
+        public Player()
         {
             Id = new Guid();
             AlreadyPlayedOpponentIds = new List<Guid>();
@@ -14,16 +14,14 @@ namespace DoToSo
             HasBeenPairedUp = false;
         }
 
-        //Properties
         public Guid Id { get; set; }
-
         public string Name { get; set; }
 
         public int Wins { get; set; }
 
         public int Ties { get; set; }
 
-        public int Looses { get; set; }
+        public int Loses { get; set; }
 
         public List<Guid> AlreadyPlayedOpponentIds { get; set; }
 
