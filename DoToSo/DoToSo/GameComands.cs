@@ -12,10 +12,9 @@ namespace DoToSo
     {
         private int preferedMatchsize = 0;
 
-        List<Match> matches = new List<Match>();
         DisplayList DisplayList = new DisplayList();
         EnterMatchResults matchResults = new EnterMatchResults();
-        Pairing Pairing = new Pairing();
+        SwissSystem Pairing = new SwissSystem();
 
         public (bool TournamentEndet, List<player>) GameManagement(List<player> playerList, bool TournamentStartet, bool TournamentEndet, string input)
         {
@@ -23,7 +22,7 @@ namespace DoToSo
             {
                 GetPreferedMatchsize();
 
-                matches = Pairing.GeneratePairing(playerList, preferedMatchsize);              
+                List<Match> matches = Pairing.GeneratePairing(playerList, preferedMatchsize);              
 
                 playerList = matchResults.AskForMatchresult(playerList, matches);
 

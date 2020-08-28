@@ -84,11 +84,11 @@ namespace DoToSo
         {
             for (int i = 0; i<numberOfWinners.Count; i++)
                 {
-                    string winnerName = matches[matchNumber].playerInMatch[numberOfWinners[i]];
+                    player winner = matches[matchNumber].PlayersInMatch[numberOfWinners[i]];
 
                     for (int j = 0; j<playerList.Count; j++)
                     {
-                        if (playerList[j].Name == winnerName)
+                        if (playerList[j].Id == winner.Id)
                         {
                             if (numberOfWinners.Count == 1)
                             {
@@ -107,14 +107,14 @@ namespace DoToSo
 
         private List<player> BookLooses(List<player> playerList, List<Match> matches, int matchNumber, List<int> numberOfWinners)
         {
-            for (int i = 0; i < matches[matchNumber].playerInMatch.Count; i++)
+            for (int i = 0; i < matches[matchNumber].PlayersInMatch.Count; i++)
             {
                 if (numberOfWinners.Contains(i) == false)
                 {
-                    string looserName = matches[matchNumber].playerInMatch[i];
+                    player loser = matches[matchNumber].PlayersInMatch[i];
                     for (int j = 0; j < playerList.Count; j++)
                     {
-                        if (playerList[j].Name == looserName)
+                        if (playerList[j].Id == loser.Id)
                         {
                             playerList[j].Looses++;
                             break;
@@ -129,9 +129,9 @@ namespace DoToSo
         {
             int playernumber = 1;
             Console.WriteLine("Who has won? Multiple players posible. Seperate Multiple inputs with spaces");
-            foreach (string playerName in matches[matchNumber].playerInMatch)
+            foreach (player player in matches[matchNumber].PlayersInMatch)
             {
-                Console.WriteLine(playernumber + ": " + playerName);
+                Console.WriteLine(playernumber + ": " + player.Name);
                 playernumber++;
             }
             return;
@@ -184,7 +184,7 @@ namespace DoToSo
             {
                 number--;
 
-                if (number >= 0 && number < matches[matchNumber].playerInMatch.Count && (winnerlist.Contains(number) == false))
+                if (number >= 0 && number < matches[matchNumber].PlayersInMatch.Count && (winnerlist.Contains(number) == false))
                 {
                    
                 }
@@ -225,9 +225,9 @@ namespace DoToSo
                     Console.WriteLine("Match Number:" + matchnumber);
                     Console.WriteLine();
 
-                    foreach (string name in match.playerInMatch)
+                    foreach (player player in match.PlayersInMatch)
                     {
-                        Console.WriteLine(name);
+                        Console.WriteLine(player.Name);
                     }
                 }
                 matchnumber++;
