@@ -7,6 +7,7 @@ namespace DoToSo
     public class Insert
     {
         private int maxNameLenght = 50;
+
         public void InsertPlayer(string input, List<Player> playerList)
         {
             bool listPlayer = true;

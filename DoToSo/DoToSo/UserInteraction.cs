@@ -12,7 +12,7 @@ namespace DoToSo
             SettingUpPlayerlist PlayerListSetup = new SettingUpPlayerlist();
             GameCommands comands = new GameCommands();
     
-            List <Player> playerList = PlayerListSetup.Command();
+            List<Player> playerList = PlayerListSetup.Command();
 
             comands.GameManagement(playerList);                       
         }

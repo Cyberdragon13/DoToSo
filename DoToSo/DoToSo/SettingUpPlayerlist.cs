@@ -19,10 +19,11 @@ namespace DoToSo
                 
                 if (UserInput.ToLower() != "start")
                 {   
-                    Console.WriteLine("enter next Player, 'list' to list all enterd players or 'start' to generate a match");
+                    Console.WriteLine("enter next Player, 'list' to list all entered players or 'start' to generate a match");
                 }            
                     
             } while (UserInput.ToLower() != "start");
+
             return playerList;
         }
     }
