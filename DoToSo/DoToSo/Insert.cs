@@ -51,7 +51,7 @@ namespace DoToSo
 
             if (listPlayer == true)
             {
-                playerList.Add(new Player() { Name = input, Wins = 0, Ties = 0, Looses = 0 });
+                playerList.Add(new Player() { Name = input, Wins = 0, Ties = 0, Loses = 0 });
             }          
         }
     }

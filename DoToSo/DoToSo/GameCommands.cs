@@ -10,7 +10,7 @@ namespace DoToSo
     {
         DisplayList DisplayList = new DisplayList();
         EnterMatchResults matchResults = new EnterMatchResults();
-        Pairing Pairing = new Pairing();
+        SwissSystem Pairing = new SwissSystem();
 
         public List<Player> GameManagement(List<Player> playerList)
         {
