@@ -4,10 +4,10 @@ using System.Text;
 
 namespace DoToSo
 {
-    public class SettingUpPlayerlist
+    public class SetUpPlayers
     {
         private string UserInput;
-        public List<Player> Command()
+        public List<Player> Insert()
         {
             List<Player> playerList = new List<Player>();
 

@@ -10,14 +10,14 @@ namespace DoToSo
     {
         DisplayList DisplayList = new DisplayList();
         EnterMatchResults matchResults = new EnterMatchResults();
-        SwissSystem Pairing = new SwissSystem();
+        SwissSystem SwissSystem = new SwissSystem();
 
         public List<Player> GameManagement(List<Player> playerList)
         {
             int preferedMatchsize = GetPreferedMatchsize();
             do
             {
-                List<Match> matches = Pairing.GeneratePairing(playerList, preferedMatchsize);
+                List<Match> matches = SwissSystem.GeneratePairing(playerList, preferedMatchsize);
 
                 playerList = matchResults.AskForMatchresult(playerList, matches);
 

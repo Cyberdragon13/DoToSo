@@ -9,12 +9,12 @@ namespace DoToSo
         public void ExecuteTournamentPlan()
         {
             StartupMessage();
-            SettingUpPlayerlist PlayerListSetup = new SettingUpPlayerlist();
-            GameCommands comands = new GameCommands();
+            SetUpPlayers PlayerListSetup = new SetUpPlayers();
+            GameCommands commands = new GameCommands();
     
-            List<Player> playerList = PlayerListSetup.Command();
+            List<Player> playerList = PlayerListSetup.Insert();
 
-            comands.GameManagement(playerList);                       
+            commands.GameManagement(playerList);                       
         }
 
 

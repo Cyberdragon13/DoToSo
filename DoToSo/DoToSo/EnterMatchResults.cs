@@ -14,7 +14,7 @@ namespace DoToSo
             {
                 ShowPairings(matches);
                 Console.WriteLine();
-                Console.WriteLine("Enter the matchnumber of which you want to enter the result");
+                Console.WriteLine("Enter the match number of which you want to enter the result");
 
                 string inputMatchResult = Console.ReadLine();
 
@@ -26,7 +26,7 @@ namespace DoToSo
                     {
                         if (matches[InputMatchInt].MatchFinished == false)
                         {
-                            playerList = AskForPlayerResults(playerList, matches, InputMatchInt);
+                            playerList = AskForMatchResult(playerList, matches, InputMatchInt);
                         }
                         else
                         {
@@ -35,7 +35,7 @@ namespace DoToSo
                     }
                     else
                     {
-                        Console.WriteLine("Pleas enter a valid number");
+                        Console.WriteLine("Please enter a valid number");
                     }
                 }
                 else
@@ -49,11 +49,11 @@ namespace DoToSo
             return playerList;
         }
 
-        private List<Player> AskForPlayerResults(List<Player> playerList, List<Match> matches, int matchNumber)
+        private List<Player> AskForMatchResult(List<Player> playerList, List<Match> matches, int matchNumber)
         {
             List<int> numberOfWinners = new List<int>(); ;
 
-            ListMatchNumber(matches, matchNumber);
+            ListPlayerNumbers(matches, matchNumber);
             string inputPlayerNumber = Console.ReadLine();
 
             if (inputPlayerNumber.Length % 2 == 1)
@@ -68,12 +68,12 @@ namespace DoToSo
             if (numberOfWinners.Count != 0)
             {
                 playerList = BookWins(playerList, matches, matchNumber, numberOfWinners);
-                playerList = BookLooses(playerList, matches, matchNumber, numberOfWinners);
+                playerList = BookLosses(playerList, matches, matchNumber, numberOfWinners);
                 matches[matchNumber].MatchFinished = true;
             }
             else
             {
-                Console.WriteLine("Please enter only the corosponding number of the player");
+                Console.WriteLine("Please enter only the corresponding number of the player");
             }
             return playerList;
         }
@@ -103,7 +103,7 @@ namespace DoToSo
             return playerList;
         }
 
-        private List<Player> BookLooses(List<Player> playerList, List<Match> matches, int matchNumber, List<int> numberOfWinners)
+        private List<Player> BookLosses(List<Player> playerList, List<Match> matches, int matchNumber, List<int> numberOfWinners)
         {
             for (int i = 0; i < matches[matchNumber].PlayersInMatch.Count; i++)
             {
@@ -123,7 +123,7 @@ namespace DoToSo
             return playerList;
         }
 
-        private void ListMatchNumber(List<Match> matches, int matchNumber)
+        private void ListPlayerNumbers(List<Match> matches, int matchNumber)
         {
             int playernumber = 1;
             Console.WriteLine("Who has won? Multiple players posible. Seperate Multiple inputs with spaces");
